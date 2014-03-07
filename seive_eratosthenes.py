@@ -1,13 +1,14 @@
 
 def seive(n):
-  t = [ x for x in range(n+1) if x > 1]
-  for i in t:
+  t = { x:x for x in range(n+1) if x > 1 }
+  keys = t.keys()
+  for i in keys:
     p = 2
-    while i*p < n:
+    while i*p < n+1:
       if i*p in t:
-        t.remove(i*p)
+        del t[i*p]
       p += 1
-  return t
+  return t.keys()
 
 def recursive_relation(limit):
   a = {}
@@ -22,7 +23,15 @@ def recursive_relation(limit):
 
 if __name__ == "__main__":
   t = int(raw_input())
-  n_i = recursive_relation(41)
+  n_i = recursive_relation(42)
   n = [ int(raw_input()) for x in range(t)]
+  primes = seive(n_i[41])
   for i in n:
-    print len(seive(n_i[i]))
+    m = n_i[i]
+    count = 0
+    for prime in primes:
+      if prime > m:
+        break
+      else:
+        count+=1
+    print count
