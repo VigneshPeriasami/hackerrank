@@ -2,3 +2,9 @@
 *~
 [#]*[#]
 .\#*
+
+#Intellij files
+*.iml
+
+#gradle build directory
+build/
