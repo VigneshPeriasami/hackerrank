@@ -5,6 +5,8 @@
 
 #Intellij files
 *.iml
+.idea/
 
 #gradle build directory
 build/
+.gradle/
