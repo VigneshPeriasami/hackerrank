@@ -3,20 +3,20 @@ package com.github.vignesh_iopex.tests.stack;
 import com.github.vignesh_iopex.stack.Stack;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class StackTest {
 
   @Test public void constructStack() {
     Stack<Integer> stack = new Stack<Integer>(2);
     stack.push(1);
-    assertEquals(0, stack.topPosition());
+    assertThat(stack.topPosition()).isEqualTo(0);
     stack.push(2);
-    assertEquals((Integer) 2, stack.pop());
-    assertEquals(0, stack.topPosition());
+    assertThat(stack.pop()).isEqualTo(2);
+    assertThat(stack.topPosition()).isEqualTo(0);
     stack.pop();
-    assertEquals(-1, stack.topPosition());
+    assertThat(stack.topPosition()).isEqualTo(-1);
   }
 
   @Test public void exceptionOnPushBeyondCapacity() {
@@ -25,9 +25,9 @@ public class StackTest {
     stack.push(2);
     try {
       stack.push(3);
-      fail();
+      fail("Exception not thrown at push beyond stack capacity");
     } catch (ArrayIndexOutOfBoundsException e) {
-      assertEquals(stack.topPosition(), 1);
+      assertThat(stack.topPosition()).isEqualTo(1);
     }
   }
 
@@ -39,9 +39,9 @@ public class StackTest {
       stack.pop();
       stack.pop();
       stack.pop();
-      fail();
+      fail("Exception not thrown on pop at empty stack.");
     } catch (ArrayIndexOutOfBoundsException e) {
-      assertEquals(-1, stack.topPosition());
+      assertThat(stack.topPosition()).isEqualTo(-1);
     }
   }
 

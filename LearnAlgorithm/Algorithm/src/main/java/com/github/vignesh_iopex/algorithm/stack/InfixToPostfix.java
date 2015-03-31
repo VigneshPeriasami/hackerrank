@@ -1,4 +1,6 @@
-package com.github.vignesh_iopex.stack;
+package com.github.vignesh_iopex.algorithm.stack;
+
+import com.github.vignesh_iopex.stack.Stack;
 
 public class InfixToPostfix {
   private char[] exp;

@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':DS')
+    testCompile libraries.junit
+    testCompile libraries.assertj
+}
+
+test {
+    afterTest { descriptor, result ->
+        println "TEST: ${descriptor.className}[${descriptor.name}] => ${result.resultType}"
+    }
+}
